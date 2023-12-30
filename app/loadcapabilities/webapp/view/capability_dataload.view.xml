@@ -1,0 +1,29 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:u="sap.ui.unified"
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  controllerName="loadcapabilities.controller.capability_dataload">
+  <Page id="_IDGenPage1" title="Upload CSV">
+    <content>
+    <l:VerticalLayout id="_IDGenVerticalLayout1">
+      <VBox id="_IDGenVBox1">
+        <u:FileUploader
+          id="fileUploader"
+          name="file"
+          uploadUrl="/CapabilityService/UploadFile"
+          httpRequestMethod="Post"
+          uploadOnChange="false"
+          width="400px"
+          buttonText="Select CSV File"
+          fileType="csv"
+          uploadComplete="handleUploadComplete"
+          typeMissmatch="onFileTypeMismatch"
+        />
+      <Button id="_IDGenButton1" text="Upload" press="onUploadPress"/>
+      </VBox>
+    </l:VerticalLayout>
+    </content>
+  </Page>
+</mvc:View>
+
