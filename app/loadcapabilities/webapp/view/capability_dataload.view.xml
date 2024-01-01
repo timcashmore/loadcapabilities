@@ -11,7 +11,7 @@
         <u:FileUploader
           id="fileUploader"
           name="file"
-          uploadUrl="/CapabilityService/UploadFile"
+          uploadUrl="/UploadFile"
           httpRequestMethod="Post"
           uploadOnChange="false"
           width="400px"

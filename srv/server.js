@@ -1,31 +1,41 @@
-//const parse = require('csv-parse');
+const csv = require('papaparse');
 const cds = require('@sap/cds');
+const express = require('express');
+const fileUpload = require('express-fileupload');
 
 cds.on('bootstrap', app => {
 
+  app.use(fileUpload({createParenthPath: true }));
 
   app.post('/UploadFile', async (req, res) => {
 
     try {
       console.log("Server side File Upload Called");
+      const oFile = req.files.file;
+      console.log("Filename= ",oFile.name);
+      const parsedData = csv.parse(oFile.data.toString(), {
+        header: true,
+        //skip_empty_lines: true,
+        delimiter: ',' // Adjust this based on your CSV file delimiter
+      });
+  
+      // Log the parsed data to the console
+      console.log('Parsed CSV data:', parsedData.meta.fields);
+      
+    res.send("File Upload Complete");
     }
     catch (error) {
       console.log("Error=" + error);
+      res.send("File Upload Error");
 
     }
-
-
-
+    // Log the parsed data to the console
+    //console.log('Parsed CSV data:', parsedData);
+    
 
   });
-
-
-
-
   
-
 });
-
 
 
 

@@ -17,10 +17,11 @@ sap.ui.define([
           aRegexResult = /\d{4}/.exec(sResponse),
           iHttpStatusCode = aRegexResult && parseInt(aRegexResult[0]),
           sMessage;
-
+        console.log("File Upload Complete");
         if (sResponse) {
-          sMessage = iHttpStatusCode === 200 ? sResponse + " (Upload Success)" : sResponse + " (Upload Error)";
-          MessageToast.show(sMessage);
+          //sMessage = iHttpStatusCode === 200 ? sResponse + " (Upload Success)" : sResponse + " (Upload Error)";
+          //sMessage = "HTTP Status = "+iHttpStatusCode;
+          MessageToast.show(sResponse);
         }
       },
 

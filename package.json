@@ -11,6 +11,8 @@
     "@sap/xssec": "^3",
     "csv-parse": "^5.5.3",
     "express": "^4",
+    "express-fileupload": "^1.4.3",
+    "papaparse": "^5.4.1",
     "passport": "^0"
   },
   "devDependencies": {
