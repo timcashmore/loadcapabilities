@@ -1,13 +1,10 @@
 context app.capabilities {
 
     entity BusinessCapabilities {
-        key CapabilityId          : Integer;
-            LoBId                 : Integer;
-            BusinessAreaId        : Integer;
+        key CapabilityId          : String;
             BusinessArea          : String;
             Capability            : String;
-            CapabilityDescription : LargeString;
-            ImplementedBy         : Integer;
+            CapabilityDetails : LargeString;
     }
 
 

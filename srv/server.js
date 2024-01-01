@@ -13,16 +13,30 @@ cds.on('bootstrap', app => {
       console.log("Server side File Upload Called");
       const oFile = req.files.file;
       console.log("Filename= ",oFile.name);
+      const { capabilities } = cds.entities("CapabilityService.BusinessCapabilities");
+      //console.log("Elements",Object.keys(capabilities.elements));
+      
       const parsedData = csv.parse(oFile.data.toString(), {
         header: true,
         //skip_empty_lines: true,
         delimiter: ',' // Adjust this based on your CSV file delimiter
       });
-  
+      //console.log("cds.entities"+cds.entities("BusinessCapabilities"));
       // Log the parsed data to the console
-      console.log('Parsed CSV data:', parsedData.meta.fields);
+      console.log('Parsed CSV data:', parsedData.data);
+      const dbop = await cds.run(INSERT.into('APP_CAPABILITIES_BUSINESSCAPABILITIES').entries(parsedData.data));
+      if (dbop.req.error.length==0) {
+        console.log("Insert ok");
+        res.send("Insert ok");
+
+      }
+      else {
+        res.send("Error in insert");
+        console.leg(error);
+
+      }
       
-    res.send("File Upload Complete");
+    //res.send("File Upload Complete");
     }
     catch (error) {
       console.log("Error=" + error);
